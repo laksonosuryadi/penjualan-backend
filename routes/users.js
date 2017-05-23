@@ -6,8 +6,10 @@ var helper = require('../helper/authJWT');
 /* GET users listing. */
 router.get('/', user.getAllUsers);
 
-router.post('/', helper.verify, user.signup)
+router.post('/', user.signup)
 
+router.get('/:id',helper.verify, user.getUserById)
 
+router.delete('/:id', helper.verify, user.deleteUser)
 
 module.exports = router;

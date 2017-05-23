@@ -60,5 +60,25 @@ module.exports = {
         }
       }
     })
+  },
+
+  deleteUser: (req, res) => {
+    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+      if(err) {
+        res.send({error:err});
+      } else {
+        res.send(deletedUser);
+      }
+    })
+  },
+
+  getUserById: (req, res) => {
+    User.findById(req.params.id, function(err, user) {
+      if(err) {
+        res.send({error: err});
+      } else {
+        res.send(user)
+      }
+    })
   }
 }
