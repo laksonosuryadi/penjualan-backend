@@ -4,6 +4,8 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const pwh = require('password-hash');
 
+require('dotenv').config();
+
 module.exports = {
   getAllUsers: (req, res) => {
     User.find((err,users) => {
