@@ -1,17 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var Product = require('../controllers/productController');
-
-/* ADD PRODUCT */
-router.post('/', Product.addProduct);
+var product = require('../controllers/productController');
 
 /* SHOW PRODUCTS */
-router.get('/', Product.getProduct);
+router.get('/', product.getAllProducts);
+
+/* ADD PRODUCT */
+router.post('/', product.addProduct);
 
 /* DELETE PRODUCT */
-router.delete('/:productId', Product.deleteProduct);
+router.delete('/:productId', product.deleteProduct);
 
 /* UPDATE PRODUCT */
-router.put('/:productId', Product.updateProduct);
+router.put('/:productId', product.updateProduct);
 
 module.exports = router;

@@ -3,6 +3,16 @@
 var Product = require('../models/product');
 
 module.exports = {
+  getAllProducts: (req, res) => {
+    Product.find((err, products) => {
+      if(err) {
+        res.send({error:err})
+      } else {
+        res.send(products)
+      }
+    });
+  },
+
   addProduct: (req, res) => {
     Product.create({
       name : req.body.name,
@@ -12,16 +22,6 @@ module.exports = {
         res.send(err)
       } else {
         res.send(product)
-      }
-    });
-  },
-
-  getAllProducts: (req, res) => {
-    Product.find((err, products) => {
-      if(err) {
-        res.send({error:err})
-      } else {
-        res.send(products)
       }
     });
   },
