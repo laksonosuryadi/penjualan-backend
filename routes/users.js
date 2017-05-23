@@ -8,4 +8,6 @@ router.get('/', user.getAllUsers);
 
 router.post('/', helper.verify, user.signup)
 
+
+
 module.exports = router;
