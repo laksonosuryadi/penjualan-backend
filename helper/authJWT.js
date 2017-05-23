@@ -11,12 +11,16 @@ module.exports = {
       }
       else {
         User.findOne({email: decoded.email}, (err, user) => {
-          if(err) {
-            res.send({error:err});
-          } else if (user == null){
-            res.send({error: 'Token not valid!'});
-          } else if(decoded.role == 'admin') {
-            next();
+          if(decoded.role == 'admin') {
+            if(err) {
+              res.send({error:err});
+            } else if (user == null){
+              res.send({error: 'Token not valid!'});
+            } else {
+              next();
+            }
+          } else {
+            res.send({error: 'You Are Not Authorized to use this feature!'})
           }
         })
       }
