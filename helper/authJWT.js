@@ -19,7 +19,7 @@ module.exports = {
             } else {
               next();
             }
-          } else {
+          } else { // IF decoded.role == "user"
             res.send({error: 'You Are Not Authorized to use this feature!'})
           }
         })
