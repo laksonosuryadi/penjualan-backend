@@ -52,7 +52,7 @@ module.exports = {
         res.send({error:"user not found"})
       } else {
         if(pwh.verify(req.body.password, user.password)) {
-          const newToken = jwt.sign({email: user.email, name: user.name}, process.env.SECRET_KEY);
+          const newToken = jwt.sign({email: user.email, name: user.name, role: user.role}, process.env.SECRET_KEY);
           user.password = null
           res.send({token: newToken, userdata: user});
         } else {
