@@ -42,8 +42,6 @@ mongoose.connection.on('connected', () => {
   console.log('mongo is connected');
 })
 
-
-
 app.use('/', index);
 app.use('/users', users);
 
