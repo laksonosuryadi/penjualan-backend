@@ -15,8 +15,10 @@ module.exports = {
 
   addProduct: (req, res) => {
     Product.create({
-      name : req.body.name,
-      price : req.body.price
+      name: req.body.name,
+      category: req.body.category,
+      price: req.body.price,
+      stock: req.body.stock
     }, function(err, product) {
       if(err){
         res.send(err)
@@ -42,8 +44,10 @@ module.exports = {
         _id : req.params.productId
       },
       {
-        name : req.body.name,
-        price : req.body.price
+        name: req.body.name,
+        category: req.body.category,
+        price: req.body.price,
+        stock: req.body.stock
       }, (err, product) => {
         if(err){
           res.send({error:err})
