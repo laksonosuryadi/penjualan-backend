@@ -7,12 +7,12 @@ var helper = require('../helper/authJWT');
 router.get('/', product.getAllProducts);
 
 /* ADD PRODUCT */
-router.post('/', helper.verify, product.addProduct);
+router.post('/', product.addProduct);
 
 /* DELETE PRODUCT */
-router.delete('/:productId', helper.verify, product.deleteProduct);
+router.delete('/:productId', product.deleteProduct);
 
 /* UPDATE PRODUCT */
-router.put('/:productId', helper.verify, product.updateProduct);
+router.put('/:productId', product.updateProduct);
 
 module.exports = router;
