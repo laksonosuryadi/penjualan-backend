@@ -6,7 +6,6 @@ const transactionSchema = new Schema({
     quantity: Number,
     product: { type: Schema.Types.ObjectId, ref: 'Product' }
   }],
-  total: Number,
   date: Number,
   month: Number,
   year: Number
