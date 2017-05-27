@@ -8,4 +8,7 @@ router.post('/', transaction.addTransaction);
 /* GET TRANSACTIONS */
 router.get('/', transaction.getTransaction);
 
+/* DELETE TRANSACTION */
+router.delete('/:id', transaction.deleteTransaction);
+
 module.exports = router;
