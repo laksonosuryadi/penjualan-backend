@@ -12,10 +12,10 @@ router.get('/', transaction.getTransaction);
 router.get('/:date/:month/:year', transaction.getTransactionByDate);
 
 /* GET TRANSACTIONS BY DATE */
-router.get('/:month/:year', transaction.getTransactionByMonth);
+router.get('/monthly/:month/:year', transaction.getTransactionByMonth);
 
 /* GET TRANSACTIONS BY YEAR */
-router.get('/:year', transaction.getTransactionByYear);
+router.get('/yearly/:year', transaction.getTransactionByYear);
 
 /* DELETE TRANSACTION */
 router.delete('/:id', transaction.deleteTransaction);
