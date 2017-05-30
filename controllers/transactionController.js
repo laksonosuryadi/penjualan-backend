@@ -32,7 +32,7 @@ module.exports = {
   },
 
   getTransactionByDate: (req, res) => {
-    Itinerary.find({date: req.params.date, month: req.params.month, year: req.params.year})
+    Transaction.find({date: req.params.date, month: req.params.month, year: req.params.year})
     .sort({ createdAt: -1})
     .populate('product_list.product')
     .exec((err, transactions) => {
