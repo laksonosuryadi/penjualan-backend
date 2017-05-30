@@ -42,7 +42,7 @@ module.exports = {
         res.send(transactions);
       }
     })
-  }
+  },
 
   deleteTransaction: (req, res) => {
     Transaction.findByIdAndRemove(req.params.id, (err, deletedTransaction) => {
