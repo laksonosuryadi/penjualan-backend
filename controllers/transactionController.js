@@ -31,6 +31,19 @@ module.exports = {
     })
   },
 
+  getTransactionByDate: (req, res) => {
+    Itinerary.find({date: req.params.date, month: req.params.month, year: req.params.year})
+    .sort({ createdAt: -1})
+    .populate('product_list.product')
+    .exec((err, transactions) => {
+      if(err){
+        res.send({error: err});
+      } else {
+        res.send(transactions);
+      }
+    })
+  }
+
   deleteTransaction: (req, res) => {
     Transaction.findByIdAndRemove(req.params.id, (err, deletedTransaction) => {
       if(err) {
