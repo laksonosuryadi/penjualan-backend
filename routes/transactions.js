@@ -8,8 +8,14 @@ router.post('/', transaction.addTransaction);
 /* GET TRANSACTIONS */
 router.get('/', transaction.getTransaction);
 
-/* GET TRANSACTIONS */
+/* GET TRANSACTIONS BY DATE */
 router.get('/:date/:month/:year', transaction.getTransactionByDate);
+
+/* GET TRANSACTIONS BY DATE */
+router.get('/:month/:year', transaction.getTransactionByDate);
+
+/* GET TRANSACTIONS BY YEAR */
+router.get('/:year', transaction.getTransactionByDate);
 
 /* DELETE TRANSACTION */
 router.delete('/:id', transaction.deleteTransaction);

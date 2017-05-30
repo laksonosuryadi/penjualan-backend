@@ -43,6 +43,30 @@ module.exports = {
     })
   },
 
+  getTransactionByMonth: (req, res) => {
+    Transaction.find({month: req.params.month, year: req.params.year})
+    .populate('product_list.product')
+    .exec((err, transactions) => {
+      if(err){
+        res.send({error: err});
+      } else {
+        res.send(transactions);
+      }
+    })
+  },
+
+  getTransactionByYear: (req, res) => {
+    Transaction.find({year: req.params.year})
+    .populate('product_list.product')
+    .exec((err, transactions) => {
+      if(err){
+        res.send({error: err});
+      } else {
+        res.send(transactions);
+      }
+    })
+  },
+
   deleteTransaction: (req, res) => {
     Transaction.findByIdAndRemove(req.params.id, (err, deletedTransaction) => {
       if(err) {
