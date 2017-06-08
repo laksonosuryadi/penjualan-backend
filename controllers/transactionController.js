@@ -85,12 +85,12 @@ module.exports = {
       if(err) {
         res.send({error:err});
       } else {
-        deletedTransaction.product_list.forEach((product) => { //from line 18 to 27 is the step to update the Stock after each transaction
+        deletedTransaction.product_list.forEach((product) => { //from line 88 to 97 is the step to update the Stock after deleting Trx
           Product.findOne({_id: product.product}, function(err,result) {
             if(err){
               res.send({error:err})
             } else {
-              result.stock = result.stock + product.quantity
+              result.stock = result.stock + product.quantity //stock is updated here
               result.save()
             }
           })
