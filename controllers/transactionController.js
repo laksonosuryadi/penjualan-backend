@@ -17,11 +17,11 @@ module.exports = {
       } else {
         var counter = 0
         transaction.product_list.forEach((product) => {
-          Product.update({_id: product.product}, function(err,res) {
+          Product.find({_id: product.product}, function(err,res) {
             if(err){
               res.send({error:err})
             } else {
-              res.stock -= product.quantity
+              res.stock = res.stock - +(product.quantity)
               res.save((err, updatedStock) => {
                 if(err) {
                   res.send({error:err})
