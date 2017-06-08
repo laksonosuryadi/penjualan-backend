@@ -1,6 +1,7 @@
 'use strict'
 
 var Transaction = require('../models/transaction')
+var Product = require('../models/product')
 
 module.exports = {
   addTransaction: (req, res) => {
@@ -14,6 +15,16 @@ module.exports = {
       if(err){
         res.send({error:err})
       } else {
+        transaction.product_list.forEach((product) => {
+          Product.find({_id: product.product}, function(err,res) {
+            if(err){
+              res.send({error:err})
+            } else {
+              res.stock -= product.quantity
+              res.save()
+            }
+          })
+        })
         res.send(transaction)
       }
     })
