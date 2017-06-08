@@ -15,26 +15,19 @@ module.exports = {
       if(err){
         res.send({error:err})
       } else {
-        var counter = 0
-        transaction.product_list.forEach((product) => {
-          Product.find({_id: product.product}, function(err,res) {
+        transaction.product_list.forEach((product) => { //from line 18 to 27 is the step to update the Stock after each transaction
+          Product.findOne({_id: product.product}, function(err,result) {
             if(err){
               res.send({error:err})
             } else {
-              res.stock = res.stock - +(product.quantity)
-              res.save((err, updatedStock) => {
-                if(err) {
-                  res.send({error:err})
-                } else {
-                  counter++
-                }
-              })
+              result.stock = result.stock - product.quantity
+              result.save()
             }
           })
         })
-        if(counter == transaction.product_list.length){
-          res.send(transaction)
-        }
+
+        res.send(transaction)
+
       }
     })
   },
